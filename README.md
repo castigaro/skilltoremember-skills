@@ -32,3 +32,11 @@ lädt sich ihre Anleitung bei Bedarf selbst nach.
 Neuer Ordner unter `skills/<name>/` mit einer `SKILL.md` (Frontmatter:
 `name` und `description` jeweils einzeilig). Beim nächsten Push auf `main`
 baut die CI automatisch die Einzel-ZIPs und aktualisiert das Release.
+
+## Lizenz
+
+GNU Affero General Public License v3.0 (AGPL-3.0) — siehe [LICENSE](LICENSE).
+Copyright © 2026 Torsten Klein (AppSonar, appsonar.de).
+
+Die Skills dürfen frei genutzt, verändert und weitergegeben werden;
+abgeleitete Sammlungen müssen unter derselben Lizenz stehen.
