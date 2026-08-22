@@ -1,0 +1,49 @@
+name: Skills veröffentlichen
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Skills prüfen und einzeln zippen
+        run: |
+          mkdir -p dist
+          for dir in skills/*/; do
+            name=$(basename "$dir")
+            if [ ! -f "$dir/SKILL.md" ]; then
+              echo "::error::skills/$name hat keine SKILL.md"
+              exit 1
+            fi
+            # Frontmatter-Minimalprüfung: ohne name-Feld importiert die App nur den Ordnernamen.
+            grep -q '^name:' "$dir/SKILL.md" || { echo "::error::skills/$name/SKILL.md ohne name-Feld"; exit 1; }
+            (cd skills && zip -q -r "../dist/${name}.zip" "${name}/SKILL.md")
+          done
+          (cd skills && zip -q -r ../dist/alle-skills.zip . -i '*/SKILL.md')
+          ls -l dist
+
+      - name: Release aktualisieren
+        # Nur vom main-Branch veröffentlichen.
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Skill-Bibliothek
+          body: |
+            Fertige Skills für SkillToRemember — jede ZIP-Datei enthält genau
+            einen Skill und lässt sich in der App über
+            Skills → ⋮ → „ZIP importieren" einspielen.
+
+            **alle-skills.zip** enthält sämtliche Skills auf einmal.
+
+            Beschreibungen und Details: siehe README des Repositories.
+          files: dist/*.zip
