@@ -31,6 +31,17 @@ jobs:
           (cd skills && zip -q -r ../dist/alle-skills.zip . -i '*/SKILL.md')
           ls -l dist
 
+      - name: Index für den In-App-Katalog erzeugen
+        run: |
+          for dir in skills/*/; do
+            name=$(basename "$dir")
+            desc=$(grep -m1 '^description:' "$dir/SKILL.md" | sed 's/^description:[[:space:]]*//')
+            jq -n --arg n "$name" --arg d "$desc" \
+              --arg u "https://github.com/castigaro/skilltoremember-skills/releases/download/latest/${name}.zip" \
+              '{name: $n, description: $d, zipUrl: $u}'
+          done | jq -s '.' > dist/skills-index.json
+          cat dist/skills-index.json
+
       - name: Release aktualisieren
         # Nur vom main-Branch veröffentlichen.
         if: github.ref == 'refs/heads/main'
@@ -46,4 +57,6 @@ jobs:
             **alle-skills.zip** enthält sämtliche Skills auf einmal.
 
             Beschreibungen und Details: siehe README des Repositories.
-          files: dist/*.zip
+          files: |
+            dist/*.zip
+            dist/skills-index.json
