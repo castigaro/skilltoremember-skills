@@ -35,8 +35,9 @@ baut die CI automatisch die Einzel-ZIPs und aktualisiert das Release.
 
 ## Lizenz
 
-GNU Affero General Public License v3.0 (AGPL-3.0) — siehe [LICENSE](LICENSE).
-Copyright © 2026 Torsten Klein (AppSonar, appsonar.de).
+Copyright © 2026 Torsten Klein
 
-Die Skills dürfen frei genutzt, verändert und weitergegeben werden;
-abgeleitete Sammlungen müssen unter derselben Lizenz stehen.
+Dieses Projekt steht unter der **GNU Affero General Public License v3.0 oder
+später** (AGPL-3.0-or-later), siehe [LICENSE](LICENSE): Wer die Skills — auch
+verändert — weiterverbreitet, muss sie unter derselben Lizenz offenlegen.
+Eine kommerzielle Lizenz ist auf Anfrage möglich.
