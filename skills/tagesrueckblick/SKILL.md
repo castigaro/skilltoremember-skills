@@ -30,7 +30,10 @@ ist ein verbundenes Gedächtnis-Repo.
 
 ## Rückblicke
 
-- „Wie war meine Woche?" / „Wie war mein Monat?" → recall auf `journal`,
-  die betreffenden Tage zusammenfassen und Muster benennen: wiederkehrende
-  Themen, Stimmungsverlauf, was besser geworden ist.
+- „Wie war meine Woche?" / „Wie war mein Monat?" → recall auf `journal`
+  mit `limit: 50` und `bump: false` — ein Monat hat einunddreißig Tage,
+  die Standard-Höchstzahl würde ihn abschneiden, und ein Rückblick ist
+  Lesen, kein Wiederlernen. Die betreffenden Tage zusammenfassen und
+  Muster benennen: wiederkehrende Themen, Stimmungsverlauf, was besser
+  geworden ist.
 - Ehrlich bleiben: Tage ohne Eintrag sind Lücken, keine schlechten Tage.
