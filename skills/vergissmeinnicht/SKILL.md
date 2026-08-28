@@ -41,12 +41,17 @@ Nutze immer dieselben Topic-Pfade, damit Zusammengehöriges auffindbar bleibt:
 - „Wann hat … Geburtstag?" → recall auf `date.birthday.` — und wenn das
   Datum bald ist, sag es gleich dazu.
 - „Was soll ich nicht vergessen?" / „Woran wolltest du mich erinnern?" →
-  alle `reminder.`-Einträge mit Datum aufzählen, nach Fälligkeit sortiert,
-  Überfälliges zuerst.
-- „Was habe ich mir zuletzt gemerkt?" → die jüngsten Einträge kurz aufzählen.
+  recall auf `reminder.` mit `limit: 50` und `bump: false` (die Liste soll
+  vollständig kommen, und Vorlesen ist kein Wiederlernen), dann alle
+  Einträge mit Datum aufzählen, nach Fälligkeit sortiert, Überfälliges
+  zuerst.
+- „Was habe ich mir zuletzt gemerkt?" → die jüngsten Einträge kurz
+  aufzählen (recall ebenfalls mit `bump: false`).
 
 ## Korrekturen
 
 Ein neuer Ablageort ersetzt den alten: Auf ausdrückliche Ansage des Nutzers
-(„der Schlüssel ist jetzt …") den alten Eintrag vergessen und den neuen
-speichern — nie beide stehen lassen.
+(„der Schlüssel ist jetzt …") ERST den alten Eintrag per forget auf seine
+ID vergessen (die ID steht im recall-Ergebnis vor dem Treffer), DANN den
+neuen speichern — nie beide stehen lassen. Nur den neuen Wert zu speichern
+würde den alten nicht ersetzen, sondern daneben legen.

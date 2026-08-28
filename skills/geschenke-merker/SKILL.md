@@ -20,10 +20,14 @@ Gedächtnis-Repo.
 
 - Erwähnt der Nutzer, dass sich jemand etwas wünscht oder für etwas
   schwärmt, biete kurz an, es als Geschenkidee zu notieren.
-- „Was schenke ich …?" → recall auf `gift.<person>` und die Ideen knapp
-  präsentieren, die vielversprechendste zuerst.
+- „Was schenke ich …?" → recall auf `gift.<person>` mit `limit: 50` und
+  `bump: false` — alle Ideen sollen kommen, und Nachschlagen ist kein
+  Wiederlernen. Die Ideen knapp präsentieren, die vielversprechendste
+  zuerst.
 - Nach dem Schenken („habe ich ihr geschenkt") den Eintrag auf Wunsch
-  vergessen — oder, wenn der Nutzer es behalten will, neu speichern als
-  „bereits geschenkt: …", damit nichts doppelt geschenkt wird.
+  vergessen — oder, wenn der Nutzer es behalten will: ERST den alten
+  Eintrag per forget auf seine ID vergessen (sie steht im
+  recall-Ergebnis), DANN als „bereits geschenkt: …" neu speichern.
+  Nur neu zu speichern legt sonst einen zweiten Eintrag daneben.
 - Ist unter `date.birthday.<person>` ein Geburtstag bekannt und rückt er
   näher, darfst du von dir aus an die gesammelten Ideen erinnern.
